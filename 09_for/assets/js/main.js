@@ -11,16 +11,14 @@ function createTag(tag) {
 }
 
 const container = document.querySelector(".container");
-
 const div = createTag("div");
-container.appendChild(div);
-
-const divContainer = document.querySelector(".container div");
 
 for (let i = 0; i < elements.length; i++) {
   const {tag, text} = elements[i];
   const createdTag = createTag(tag);
-
-  createdTag.innerHTML = text;
-  divContainer.appendChild(createdTag);
+  
+  createdTag.innerText = text;
+  div.appendChild(createdTag);
 }
+
+container.appendChild(div);

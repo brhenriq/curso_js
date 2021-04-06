@@ -37,10 +37,10 @@ var GeraSenha = /*#__PURE__*/function () {
       var senha = '';
 
       while (senha.length <= charQtd - 1) {
-        if (numeros) senha += _Geradores__WEBPACK_IMPORTED_MODULE_0__.default.geraNumero();
-        if (maiuscula) senha += _Geradores__WEBPACK_IMPORTED_MODULE_0__.default.geraMaiuscula();
-        if (minusculas) senha += _Geradores__WEBPACK_IMPORTED_MODULE_0__.default.geraMinuscula();
-        if (simbolos) senha += _Geradores__WEBPACK_IMPORTED_MODULE_0__.default.geraSimbolo();
+        if (numeros && senha.length <= charQtd - 1) senha += _Geradores__WEBPACK_IMPORTED_MODULE_0__.default.geraNumero();
+        if (maiuscula && senha.length <= charQtd - 1) senha += _Geradores__WEBPACK_IMPORTED_MODULE_0__.default.geraMaiuscula();
+        if (minusculas && senha.length <= charQtd - 1) senha += _Geradores__WEBPACK_IMPORTED_MODULE_0__.default.geraMinuscula();
+        if (simbolos && senha.length <= charQtd - 1) senha += _Geradores__WEBPACK_IMPORTED_MODULE_0__.default.geraSimbolo();
       }
 
       return senha;

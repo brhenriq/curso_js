@@ -5,10 +5,10 @@ class GeraSenha {
     let senha = '';
 
     while(senha.length <= charQtd-1) {
-      if(numeros) senha += Geradores.geraNumero();
-      if(maiuscula) senha += Geradores.geraMaiuscula();
-      if(minusculas) senha += Geradores.geraMinuscula();
-      if(simbolos) senha += Geradores.geraSimbolo();
+      if(numeros && senha.length <= charQtd-1) senha += Geradores.geraNumero();
+      if(maiuscula && senha.length <= charQtd-1) senha += Geradores.geraMaiuscula();
+      if(minusculas && senha.length <= charQtd-1) senha += Geradores.geraMinuscula();
+      if(simbolos && senha.length <= charQtd-1) senha += Geradores.geraSimbolo();
     }
 
     return senha;

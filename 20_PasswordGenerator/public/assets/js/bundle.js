@@ -30,20 +30,20 @@ var GeraSenha = /*#__PURE__*/function () {
     key: "geraNovaSenha",
     value: function geraNovaSenha() {
       var charQtd = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 8;
-      var numeros = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
-      var maiuscula = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : true;
-      var minusculas = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : true;
-      var simbolos = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : true;
+      var numeros = arguments.length > 1 ? arguments[1] : undefined;
+      var maiuscula = arguments.length > 2 ? arguments[2] : undefined;
+      var minusculas = arguments.length > 3 ? arguments[3] : undefined;
+      var simbolos = arguments.length > 4 ? arguments[4] : undefined;
       var senha = '';
 
-      while (senha.length <= charQtd - 1) {
-        if (numeros && senha.length <= charQtd - 1) senha += _Geradores__WEBPACK_IMPORTED_MODULE_0__.default.geraNumero();
-        if (maiuscula && senha.length <= charQtd - 1) senha += _Geradores__WEBPACK_IMPORTED_MODULE_0__.default.geraMaiuscula();
-        if (minusculas && senha.length <= charQtd - 1) senha += _Geradores__WEBPACK_IMPORTED_MODULE_0__.default.geraMinuscula();
-        if (simbolos && senha.length <= charQtd - 1) senha += _Geradores__WEBPACK_IMPORTED_MODULE_0__.default.geraSimbolo();
+      while (senha.length < charQtd) {
+        if (numeros) senha += _Geradores__WEBPACK_IMPORTED_MODULE_0__.default.geraNumero();
+        if (maiuscula) senha += _Geradores__WEBPACK_IMPORTED_MODULE_0__.default.geraMaiuscula();
+        if (minusculas) senha += _Geradores__WEBPACK_IMPORTED_MODULE_0__.default.geraMinuscula();
+        if (simbolos) senha += _Geradores__WEBPACK_IMPORTED_MODULE_0__.default.geraSimbolo();
       }
 
-      return senha;
+      return senha.slice(0, charQtd);
     }
   }]);
 
@@ -70,8 +70,7 @@ function _defineProperties(target, props) { for (var i = 0; i < props.length; i+
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
-var letras = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
-var simbolos = ['|', '!', '@', '#', '$', '%', '&', '*', '(', ')', '-', '_', '+', '=', ',', '.', ';', ']', '[', '{', '}', ':', '>', '<', '?'];
+var simbolos = '|!@#$%&*()-_+=,.;][{}:><?';
 
 var Geradores = /*#__PURE__*/function () {
   function Geradores() {
@@ -88,20 +87,17 @@ var Geradores = /*#__PURE__*/function () {
   }, {
     key: "geraSimbolo",
     value: function geraSimbolo() {
-      var num = this.geraNumero(0, simbolos.length);
-      return String(simbolos[num]);
+      return String(simbolos[this.geraNumero(0, simbolos.length)]);
     }
   }, {
     key: "geraMaiuscula",
     value: function geraMaiuscula() {
-      var num = this.geraNumero(0, letras.length);
-      return String(letras[num].toUpperCase());
+      return String.fromCharCode(this.geraNumero(65, 91));
     }
   }, {
     key: "geraMinuscula",
     value: function geraMinuscula() {
-      var num = this.geraNumero(0, letras.length);
-      return String(letras[num].toLowerCase());
+      return String.fromCharCode(this.geraNumero(97, 123));
     }
   }]);
 

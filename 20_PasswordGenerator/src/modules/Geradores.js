@@ -1,5 +1,4 @@
-const letras = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
-const simbolos = ['|', '!', '@', '#', '$', '%', '&', '*', '(', ')', '-', '_', '+', '=', ',', '.', ';', ']', '[', '{', '}', ':', '>', '<', '?'];
+const simbolos = '|!@#$%&*()-_+=,.;][{}:><?';
 
 class Geradores {
   geraNumero(min = 0, max = 9) {
@@ -7,18 +6,15 @@ class Geradores {
   }
 
   geraSimbolo() {
-    const num = this.geraNumero(0, simbolos.length);
-    return String(simbolos[num]);
+    return String(simbolos[this.geraNumero(0, simbolos.length)]);
   }
 
   geraMaiuscula() {
-    const num = this.geraNumero(0, letras.length);
-    return String(letras[num].toUpperCase());
+    return String.fromCharCode(this.geraNumero(65, 91));
   }
 
   geraMinuscula() {
-    const num = this.geraNumero(0, letras.length);
-    return String(letras[num].toLowerCase());
+    return String.fromCharCode(this.geraNumero(97, 123));
   }
 }
 
